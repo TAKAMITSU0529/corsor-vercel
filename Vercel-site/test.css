@@ -1,0 +1,640 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ヘッダー */
+.header {
+    position: fixed;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-green);
+}
+
+/* ヒーローセクション */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 2rem;
+    overflow: hidden; /* 追加 */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(10, 143, 133, 0.5), rgba(241, 196, 15, 0.5));
+    animation: moveBackground 30s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(-25%, -25%);
+    }
+    50% {
+        transform: translate(25%, 25%);
+    }
+    100% {
+        transform: translate(-25%, -25%);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    color: white;
+    text-shadow: 
+        0 0 10px rgba(10, 143, 133, 0.5),
+        0 0 20px rgba(10, 143, 133, 0.3),
+        0 0 30px rgba(10, 143, 133, 0.2);
+    animation: 
+        float 3s ease-in-out infinite,
+        fadeIn 2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green), var(--primary-green));
+    background-size: 200% 100%;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(3, 75, 69, 0.2);
+    animation: gradientSlide 3s ease-out infinite;
+}
+
+@keyframes gradientSlide {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    30%, 90% {
+        background-position: 100% 50%;
+    }
+}
+
+.cta-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(3, 75, 69, 0.3);
+}
+
+.hero-subcopy {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-subcopy p {
+    font-size: calc(1em + 1.9px); /* 既存のフォントサイズに2px追加 */
+    color: white;
+    margin: 0;
+    padding: 0 2rem;
+}
+
+/* 特徴セクション */
+.features {
+    padding: 5rem 2rem;
+    background: #f8f9fa;
+}
+
+.feature-grid {
+    margin-top: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 2rem 2rem;
+}
+
+.feature-card {
+    position: relative;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: blur(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.8);
+    background-size: 200% 200%;
+}
+
+.gradient-animation.green {
+    background: linear-gradient(
+        135deg,
+        rgba(3, 75, 69, 0.95),
+        rgba(10, 143, 133, 0.95),
+        rgba(46, 204, 113, 0.95),
+        rgba(3, 75, 69, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.yellow {
+    background: linear-gradient(
+        135deg,
+        rgba(241, 196, 15, 0.95),
+        rgba(243, 156, 18, 0.95),
+        rgba(230, 126, 34, 0.95),
+        rgba(241, 196, 15, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.orange {
+    background: linear-gradient(
+        135deg,
+        rgba(230, 126, 34, 0.95),
+        rgba(211, 84, 0, 0.95),
+        rgba(192, 57, 43, 0.95),
+        rgba(230, 126, 34, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.blue {
+    background: linear-gradient(
+        135deg,
+        rgba(41, 128, 185, 0.95),
+        rgba(52, 152, 219, 0.95),
+        rgba(41, 128, 185, 0.95),
+        rgba(52, 152, 219, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.purple {
+    background: linear-gradient(
+        135deg,
+        rgba(142, 68, 173, 0.95),
+        rgba(155, 89, 182, 0.95),
+        rgba(142, 68, 173, 0.95),
+        rgba(155, 89, 182, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.cyan {
+    background: linear-gradient(
+        135deg,
+        rgba(22, 160, 133, 0.95),
+        rgba(26, 188, 156, 0.95),
+        rgba(22, 160, 133, 0.95),
+        rgba(26, 188, 156, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.red {
+    background: linear-gradient(
+        135deg,
+        rgba(192, 57, 43, 0.95),
+        rgba(231, 76, 60, 0.95),
+        rgba(192, 57, 43, 0.95),
+        rgba(231, 76, 60, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.gradient-animation.gold {
+    background: linear-gradient(
+        135deg,
+        rgba(243, 156, 18, 0.95),
+        rgba(241, 196, 15, 0.95),
+        rgba(243, 156, 18, 0.95),
+        rgba(241, 196, 15, 0.95)
+    );
+    animation: gradientMove 15s ease infinite;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+.content-inner {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.2s ease-out;
+    color: #333;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card:hover .gradient-animation {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(20px);
+}
+
+.feature-card:hover .content-inner {
+    color: white;
+    transform: scale(1.05);
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.2s ease-out;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.2s ease-out;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* アニメーションの最適化 */
+.feature-card {
+    will-change: transform;
+}
+
+.gradient-animation {
+    will-change: opacity, transform, filter;
+}
+
+.content-inner {
+    will-change: transform, color;
+}
+
+/* サービスセクション */
+.services {
+    padding: 5rem 2rem;
+}
+
+.service-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    position: relative;
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.service-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 導入事例セクション */
+.cases {
+    padding: 5rem 2rem;
+    background: #f8f9fa;
+}
+
+.case-slider {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    padding: 2rem 0;
+    gap: 2rem;
+}
+
+.case-card {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    position: relative;
+    color: white;
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.case-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.case-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* お問い合わせフォーム */
+.contact {
+    padding: 5rem 2rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.submit-button {
+    padding: 1rem;
+    background: var(--gradient-green);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(3, 75, 69, 0.2);
+}
+
+.submit-button:hover {
+    background: var(--gradient-green);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(3, 75, 69, 0.3);
+}
+
+/* フッター */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 3rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* 共通スタイル */
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .feature-grid,
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* カラー変数の定義 */
+:root {
+    --primary-green: #034B45;
+    --secondary-green: #0A8F85;
+    --gradient-green: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    --white: #ffffff;
+    --off-white: #f8f9fa;
+}
+
+.service-description {
+    text-align: center;
+    margin: 2em auto;
+    max-width: 800px;
+    line-height: 1.8;
+}
+
+.service-description p {
+    margin-bottom: 1.5em;
+}
+
+.business-title {
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+}
+
+.ai-text {
+    font-size: 4.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.05em;
+    margin-right: 0.5rem;
+}
+
+.business-text {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* レスポンシブ対応を追加 */
+@media (max-width: 768px) {
+    .business-title {
+        margin-left: 5%;
+    }
+    
+    .ai-text {
+        font-size: 3.5rem;
+    }
+    
+    .business-text {
+        font-size: 1.4rem;
+    }
+}
